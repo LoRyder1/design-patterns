@@ -24,3 +24,20 @@ class Quarterback < BostonNarwin
     file.close 
   end
 end
+
+class Receiver < BostonNarwin
+  attr_reader :path, :play
+
+  def initialize path, play
+    super 'Run, run, run!!!'
+    @path = path
+    @play = play
+  end
+
+  def execute
+    file = File.open path, 'a'
+    file.write "#{name}: #{play}\n"
+    file.close
+  end
+end
+
