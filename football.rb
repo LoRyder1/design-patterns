@@ -41,3 +41,23 @@ class Receiver < BostonNarwin
   end
 end
 
+class TeamOwner < BostonNarwin
+  attr_reader :path, :target
+
+  def initialize path, target
+    super "We are moving the team from #{prettify path} to #{prettify target}!"
+    @path = path
+    @target = target
+  end
+
+  def execute
+    FileUtils.mv path, target
+    file = File.open target, 'a'
+    file.write "#{name}: We moved from #{prettify path} to #{prettify target}!"
+    file.close
+  end
+
+  def prettify pathname
+    (pathname.chomp File.extname(pathname)).capitalize
+  end
+end
