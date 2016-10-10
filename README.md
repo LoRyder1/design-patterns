@@ -2,6 +2,10 @@
 
 The Command design pattern intends to separate and decouple an object of invocation from the object that receives the message of invocation. We will encapsulate all pertinent information of a method and execute the method at a later time. Essentially, the Command pattern gives us the ability to queue a series of operations for a later time. Let's dig in. 
 
+The Command pattern suggests that we create objects that perform specific tasks and actions. For our example, the Quarterback object created a file, the Receiver appended to the file, and the TeamOwner object moved it. Each of the command objects completed their action through CompositeCommand#execute. 
+
+Having one object, an instance of CompositeCommand, that executes all stored commands presents us with solutions ranging from simple file maninpulation to user triggered interaction. The Command pattern also allows us to 'store' and 'remember' commands prior to and after execution. 
+
 #Five Main Points
 
 1. Separate the things that change from the things that stay the same.

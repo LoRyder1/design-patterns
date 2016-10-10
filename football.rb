@@ -1,3 +1,5 @@
+require 'pry'
+
 class BostonNarwin
   attr_reader :action
   def initialize action
@@ -77,5 +79,25 @@ class CompositeCommand < BostonNarwin
     commands.each { |command| command.execute }
   end
 end
+
+quarterback = Quarterback.new('boston.txt', "I'm going to throw a perfect pass!")
+receiver = Receiver.new('boston.txt', "I'm going to catch the ball!")
+team_owner = TeamOwner.new('boston.txt', 'somerville.txt')
+
+command = CompositeCommand.new
+
+command.add_command quarterback, receiver, team_owner
+
+command.execute
+
+
+
+
+
+
+
+
+
+
 
 
