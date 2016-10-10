@@ -1,3 +1,5 @@
+require 'pry'
+
 class CoffeeRoutine
   attr_reader :task
 
@@ -42,6 +44,26 @@ class AddCoffee < CoffeeRoutine
   end
 end
 
+class PressPlunger < CoffeeRoutine
+  def initialize
+    super 'Pressing the plunger down!'
+  end
+
+  def time
+    2.0
+  end
+end
+
+class PressStartButton < CoffeeRoutine
+  def initialize
+    super 'Pushing the start button!'
+  end
+
+  def time
+    3.0
+  end
+end
+
 class CompositeTasks < CoffeeRoutine
   attr_reader :task, :steps
 
@@ -64,18 +86,12 @@ class CompositeTasks < CoffeeRoutine
   end
 end
 
+class FrenchPress < CompositeTasks
 
-# g = GrindCoffee.new
-# p g.task
-# p g.time
-
-class FrenchPress < CoffeeRoutine
-  attr_reader :task, :steps
-
-  def intialize task
+  def initialize
     super 'Using the French press to make coffee'
     @steps = []
-    add_step BoilingWater.new
+    add_step BoilWater.new
     add_step GrindCoffee.new
     add_step AddCoffee.new
 
@@ -87,11 +103,17 @@ class DripMaker < CompositeTasks
   def initialize
     super 'Using the DripMaker to make coffee!!!'
     add_step GrindCoffee.new
-    add_step BoilWater
+    add_step BoilWater.new
     add_step AddCoffee.new
 
-    add_step PressStartButtone.new
+    # add_step PressStartButton.new
   end
 end
+
+frenchpress = FrenchPress.new
+dripmaker = DripMaker.new
+
+p frenchpress.time_required 
+p dripmaker.time_required
 
 
