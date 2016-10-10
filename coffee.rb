@@ -46,3 +46,30 @@ end
 # p g.task
 # p g.time
 
+class FrenchPress < CoffeeRoutine
+  attr_reader :task, :steps
+
+  def intialize task
+    super 'Using the French press to make coffee'
+    @steps = []
+    add_step BoilingWater.new
+    add_step GrindCoffee.new
+    add_step AddCoffee.new
+  end
+
+  def add_step step
+    steps << step
+  end
+
+  def remove_step step
+    steps.delete step  
+  end
+
+  def time_required
+    total_time = 0.0
+    steps.each { |step| total_time += step.time }
+    total_time
+  end
+end
+
+
