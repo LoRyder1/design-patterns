@@ -42,37 +42,6 @@ class AddCoffee < CoffeeRoutine
   end
 end
 
-# g = GrindCoffee.new
-# p g.task
-# p g.time
-
-class FrenchPress < CoffeeRoutine
-  attr_reader :task, :steps
-
-  def intialize task
-    super 'Using the French press to make coffee'
-    @steps = []
-    add_step BoilingWater.new
-    add_step GrindCoffee.new
-    add_step AddCoffee.new
-  end
-
-  def add_step step
-    steps << step
-  end
-
-  def remove_step step
-    steps.delete step  
-  end
-
-  def time_required
-    total_time = 0.0
-    steps.each { |step| total_time += step.time }
-    total_time
-  end
-end
-
-
 class CompositeTasks < CoffeeRoutine
   attr_reader :task, :steps
 
@@ -94,3 +63,35 @@ class CompositeTasks < CoffeeRoutine
     total_time
   end
 end
+
+
+# g = GrindCoffee.new
+# p g.task
+# p g.time
+
+class FrenchPress < CoffeeRoutine
+  attr_reader :task, :steps
+
+  def intialize task
+    super 'Using the French press to make coffee'
+    @steps = []
+    add_step BoilingWater.new
+    add_step GrindCoffee.new
+    add_step AddCoffee.new
+
+    add_step PressPlunger.new
+  end
+end
+
+class DripMaker < CompositeTasks
+  def initialize
+    super 'Using the DripMaker to make coffee!!!'
+    add_step GrindCoffee.new
+    add_step BoilWater
+    add_step AddCoffee.new
+
+    add_step PressStartButtone.new
+  end
+end
+
+
