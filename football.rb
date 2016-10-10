@@ -61,3 +61,21 @@ class TeamOwner < BostonNarwin
     (pathname.chomp File.extname(pathname)).capitalize
   end
 end
+
+class CompositeCommand < BostonNarwin
+  attr_accessor :commands
+
+  def initialize
+    @commands = []
+  end
+
+  def add_command(*args)
+    args.each { |arg| commands << arg }
+  end
+
+  def execute
+    commands.each { |command| command.execute }
+  end
+end
+
+

@@ -1,3 +1,7 @@
+#Command Pattern
+
+The Command design pattern intends to separate and decouple an object of invocation from the object that receives the message of invocation. We will encapsulate all pertinent information of a method and execute the method at a later time. Essentially, the Command pattern gives us the ability to queue a series of operations for a later time. Let's dig in. 
+
 #Five Main Points
 
 1. Separate the things that change from the things that stay the same.
