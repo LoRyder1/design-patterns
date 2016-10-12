@@ -90,7 +90,12 @@ command.add_command quarterback, receiver, team_owner
 
 command.execute
 
+<<-Command
+The Command pattern suggests that we create objects that perform specific tasks and actions. For our example, the Quarterback object created a file, the Receiver appended to the file, and the TeamOwner object moved it. Each of the command objects completed their action through CompositeCommand#execute.
 
+Having one object, an instance of CompositeCommand, that executes all stored commands presents us with solutions ranging from simple file manipulation to user triggered interaction. The Command pattern also allos us to "store" and "remember" commands prior to and after execution. 
+
+Command
 
 
 

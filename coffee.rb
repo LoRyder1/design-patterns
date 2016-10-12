@@ -113,7 +113,14 @@ end
 frenchpress = FrenchPress.new
 dripmaker = DripMaker.new
 
-p frenchpress.time_required 
-p dripmaker.time_required
+# p frenchpress.time_required 
+# p dripmaker.time_required
+
+<<-Composite
+  We create a component class that ties the numerous simple and complex characteristics together. In our example, CoffeeRoutine defines an elementary method #time and each child class implements its own amount. 
+  Next, we create leaf classes, AddCoffee, BoilWater, and GrindCoffee, that share the same characteristics with one another. Remember that it's the nature of leaf classes to be simple. If you happen across a leaf class that could be broken up, it might potentially be a composite class in disguise. Break up those actions into individual leaf classes and turn the original class into a composite. All of our leaf classes had a #time method. 
+  The composite class handles all the subtasks, essentially suing the child classes at its will. We can see that our two composite classes and their methods, FrenchPress#time_required and DripMaker#time_required manipulate the method #time from the leaf classes. Ultimately, our coffee makers are able to treat each step, GrindCoffee, BoilWater and AddCoffee uniformly. 
+Composite
+
 
 
